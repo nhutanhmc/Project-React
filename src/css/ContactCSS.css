@@ -1,0 +1,17 @@
+.contactForm{
+  margin-left: 20rem;
+  margin-top: 40px;
+}
+.contactInfo{
+  margin-left: 20rem;
+  margin-top: 7rem;
+}
+
+.container{
+  display: flex;
+  
+}
+.contact{
+  background-color: whitesmoke;
+  margin: -8px;
+}

@@ -1,0 +1,13 @@
+.about-container{
+    height: 100vh;
+    display: flex;
+}
+.block1{
+    display: flex;
+    margin-top: 2rem;
+}
+.col2{
+    margin-left: 10px;
+}.about-img{
+    padding-left: 18rem;
+}
