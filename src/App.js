@@ -10,16 +10,19 @@ import Payment from "./component/Payment";
 import Footer from "./component/Footer";
 import History from "./component/HistoryApplication";
 import Car from "./component/Car";
+import CarDetail from "./component/CarDetail";
 import Booking from "./component/Booking";
+import CarCart from "./component/CarCart";
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 import About from "./component/About";
 import Protected from "./context/Protected";
-
+import { CartProvider } from "./component/CartContext";
 
 function App() {
 
   return (
     <div className="App">
+      <CartProvider>
       <AuthContextProvider>
         <Navigation />
         <Routes>
@@ -27,6 +30,8 @@ function App() {
           <Route path="/loginpage" element={<Loginpage />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/car" element={<Car />}></Route>
+          <Route path="/carcart" element={<CarCart />}></Route>
+          <Route path="/cardetail/:id" element={<CarDetail />}></Route>
           <Route path="/booking/:CarId" element={<Protected><Booking /></Protected>}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/payment/:CarId" element={<Protected><Payment /></Protected>}></Route>
@@ -35,6 +40,7 @@ function App() {
         </Routes>
         <Footer />
       </AuthContextProvider>
+      </CartProvider>
       <NotificationContainer/>
     </div>
   );
