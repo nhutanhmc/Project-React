@@ -1,4 +1,3 @@
-// Car.js
 import React, { useEffect, useState } from "react";
 import {
   Card,
@@ -6,25 +5,20 @@ import {
   CardMedia,
   Typography,
   Grid,
-  IconButton,
+  Button,
+  Fab,
 } from "@mui/material";
-import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
 import { useCart } from "./CartContext";
-import Badge from "@mui/material/Badge";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const StyledBadge = styled(Badge)({
-  "& .MuiBadge-badge": {
-    right: -3,
-    top: 13,
-    border: "2px solid #fff", // Change the background color
-    padding: "0 4px",
+const StyledCard = styled(Card)({
+  "&:hover": {
+    boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.3)",
+    transform: "scale(1.03)",
+    transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
   },
 });
 
@@ -61,7 +55,7 @@ function Car() {
       <Grid container spacing={2}>
         {filteredCars.map((car) => (
           <Grid item key={car.id} xs={12} sm={6} md={4}>
-            <Card>
+            <StyledCard>
               <CardMedia
                 component="img"
                 alt={car.name}
@@ -72,10 +66,7 @@ function Car() {
                 <Typography variant="h3" component="div">
                   {car.name} : {car.cost}$
                 </Typography>
-                <Link
-                  to={`/cardetail/${car.id}`}
-                  style={{ textDecoration: "none" }}
-                >
+                <Link to={`/cardetail/${car.id}`} style={{ textDecoration: "none" }}>
                   <Button variant="outlined">Detail</Button>
                 </Link>
               </CardContent>
@@ -87,8 +78,7 @@ function Car() {
               >
                 <AddIcon />
               </Fab>
-              
-            </Card>
+            </StyledCard>
           </Grid>
         ))}
       </Grid>
