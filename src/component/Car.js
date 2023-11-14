@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
 import { useCart } from "./CartContext";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -86,6 +87,7 @@ function Car() {
               >
                 <AddIcon />
               </Fab>
+              
             </Card>
           </Grid>
         ))}
@@ -101,11 +103,6 @@ function Car() {
       {renderCars("Standard")}
       <h2>Economy</h2>
       {renderCars("Economy")}
-      <IconButton aria-label="cart">
-        <StyledBadge badgeContent={getTotalItems()} color="secondary">
-          <ShoppingCartIcon />
-        </StyledBadge>
-      </IconButton>
     </div>
   );
 }

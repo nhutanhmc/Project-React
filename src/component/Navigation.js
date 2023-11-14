@@ -70,6 +70,11 @@ export default function Navigation() {
               Contact
             </Link>
           </Button>
+          <Button sx={{ color: "black", fontSize: "20px", fontWeight: "bold", marginLeft: "30px" }}>
+            <Link to="/addnewcar" style={{ textDecoration: "none", color: "black" }}>
+              Add new Car
+            </Link>
+          </Button>
           <div className="avatar">
             {user?.displayName && (
               <Avatar

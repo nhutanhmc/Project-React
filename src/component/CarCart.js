@@ -35,7 +35,7 @@ function CarCart() {
                 <TableRow key={item.id}>
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.quantity}</TableCell>
-                  <TableCell>{item.cost}</TableCell>
+                  <TableCell>{item.cost*item.quantity}</TableCell>
                 </TableRow>
               ))}
             <TableRow>

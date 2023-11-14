@@ -21,7 +21,10 @@ export const CartProvider = ({ children }) => {
       } else {
         // Nếu sản phẩm chưa tồn tại trong giỏ hàng, thêm vào mảng và cập nhật tổng chi phí
         const newItem = { id: itemId, name: itemName, quantity: 1, cost: itemCost };
-        return { items: [...prevCart.items, newItem], totalCost: prevCart.totalCost + itemCost };
+        return {
+          items: [...prevCart.items, newItem], 
+          totalCost: prevCart.totalCost + newItem.cost * newItem.quantity
+        }
       }
     });
   };

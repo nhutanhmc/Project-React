@@ -13,15 +13,18 @@ import Car from "./component/Car";
 import CarDetail from "./component/CarDetail";
 import Booking from "./component/Booking";
 import CarCart from "./component/CarCart";
+import CarEdit from "./component/CarEdit";
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 import About from "./component/About";
+import AddNewCar from "./component/AddNewCar";
 import Protected from "./context/Protected";
 import { CartProvider } from "./component/CartContext";
-
+import { useState } from "react";
 function App() {
 
   return (
-    <div className="App">
+    <div className="App" >
+      
       <CartProvider>
       <AuthContextProvider>
         <Navigation />
@@ -30,6 +33,8 @@ function App() {
           <Route path="/loginpage" element={<Loginpage />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/car" element={<Car />}></Route>
+          <Route path="/caredit/:id" element={<CarEdit />}></Route>
+          <Route path="/addnewcar" element={<AddNewCar />}></Route>
           <Route path="/carcart" element={<CarCart />}></Route>
           <Route path="/cardetail/:id" element={<CarDetail />}></Route>
           <Route path="/booking/:CarId" element={<Protected><Booking /></Protected>}></Route>
