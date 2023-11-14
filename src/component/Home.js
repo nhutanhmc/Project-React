@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import '../css/Home.css';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -7,13 +7,13 @@ import CarRentalTwoToneIcon from '@mui/icons-material/CarRentalTwoTone';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 
-
 export default function Home() {
+    const imageGalleryRef = useRef(null);
 
     const images = [
         {
             original: 'https://static.danhgiaxe.com/data/201525/the-aventadors-aggressive-lines-and-stealth-fighter-like-edges-make-for-a-menacing-beauty-thats-perfect-for-lambos-attention-hoarding-ethos_2324.jpg',
-
+            
         },
         {
             original: 'https://vnn-imgs-f.vgcloud.vn/2020/10/21/10/huracan-la-mo-t-trong-nhu-ng-ma-u-xe-de-p-nha-t-cu-a-lamborghini-a-nh-autocar.jpg',
@@ -37,13 +37,34 @@ export default function Home() {
         }
     ];
 
+    useEffect(() => {
+        const gallery = imageGalleryRef.current;
+
+        const intervalId = setInterval(() => {
+            if (gallery) {
+                gallery.slideToIndex(gallery.getCurrentIndex() + 1);
+            }
+        }, 3000); // Thời gian chuyển đổi giữa các hình ảnh (ms)
+
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, []);
     return (
         <div className="home-container">
-
-            {/* phần header của trang */}
-            <Typography variant="h2" sx={{ color: '#E7B10A', paddingTop: '8rem', textAlign: 'center' }}>Self Driving Car</Typography>
             <CarRentalTwoToneIcon sx={{ fontSize: '70px', paddingLeft: '56rem', color: '#D8D8D8'}} />
-            <ImageGallery items={images} showNav={false} showFullscreenButton={false} slideDuration={300} />
+
+            {/* Gallery hình ảnh */}
+            <ImageGallery
+                ref={imageGalleryRef}
+                items={images}
+                showNav={false}
+                showFullscreenButton={false}
+                slideDuration={300}
+                autoPlay={true} // Tự động chuyển đổi hình ảnh
+                stopPropagation={true} // Dừng chuyển đổi khi người dùng tương tác
+                infinite={true} // Vòng lặp vô hạn giữa các hình ảnh
+            />
 
             {/* phần body của trang */}
             <div className="body">
